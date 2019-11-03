@@ -1,4 +1,4 @@
-def gitUrl = "https://github.com/example/project.git"
+def gitUrl = "https://github.com/vonnetworking/jenkins_seed_job.git"
 
 job("Test-Build") {
     description "Creates Test Build project"
