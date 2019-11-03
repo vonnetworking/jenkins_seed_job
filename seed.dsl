@@ -14,6 +14,6 @@ job("Test-Build") {
         }
     }
     steps {
-        shell "Look: Im building master!"
+        shell "echo 'Look: Im building master!'"
     }
 }
