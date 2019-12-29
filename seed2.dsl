@@ -52,7 +52,7 @@ def config = new Yaml().load(("${WORKSPACE}/config.yaml" as File).text)
 config.each { jobname, data ->
   println "Building Job " + jobname + " Using data: " + data
   new genPipeline(
-    name: name,
+    name: jobname,
     git_url: git_url).build(this)
   println "BRANCHES: End"
 } //end each block
