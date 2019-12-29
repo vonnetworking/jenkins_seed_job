@@ -8,7 +8,7 @@ slurper.classLoader = this.class.classLoader
 def config = slurper.parse(readFileFromWorkspace('pipelines/moddel/mdProducts.config'))
 */
 
-List config = new Yaml().load(("${WORKSPACE}/config.yaml" as File).text)
+def config = new Yaml().load(("${WORKSPACE}/config.yaml" as File).text)
 
 config.each { jobname, data ->
   println "Job: " + jobname
