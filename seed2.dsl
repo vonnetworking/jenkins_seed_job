@@ -18,8 +18,6 @@ class genPipeline {
 
           definition {
               cps {
-                  sandbox()
-
                   script("""
                       timestamps {
                       node {
