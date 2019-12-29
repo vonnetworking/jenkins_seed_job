@@ -5,7 +5,7 @@ import javaposse.jobdsl.dsl.Job
 slurper.classLoader = this.class.classLoader
 def config = slurper.parse(readFileFromWorkspace('pipelines/moddel/mdProducts.config'))
 */
-def config = readYaml file: "${WORKSPACE}/config.yaml"
+def config = readYaml file:"${env.WORKSPACE}} + "/config.yaml"
 
 config.each { jobname, data ->
   println "Job: " + jobname
