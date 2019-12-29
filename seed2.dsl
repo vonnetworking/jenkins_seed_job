@@ -21,7 +21,6 @@ class genPipeline {
                   script("""
                       timestamps {
                       node {
-                        label any
                         stage ("Checkout") {
                             checkout([\$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: \' $git_url \']]])
                         }
