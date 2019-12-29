@@ -5,7 +5,8 @@ import org.yaml.snakeyaml.Yaml
 
 class genPipeline {
     String name
-    Map data
+    String git_url
+
     Job build(DslFactory dslFactory) {
       dslFactory.pipelineJob("$name") {
           it.description this.jobDescription
@@ -52,6 +53,6 @@ config.each { jobname, data ->
   println "Building Job " + jobname + " Using data: " + data
   new genPipeline(
     name: name
-    data: data).build(this)
+    git_url: git_url).build(this)
   println "BRANCHES: End"
 } //end each block
