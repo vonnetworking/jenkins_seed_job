@@ -11,8 +11,8 @@ def config = slurper.parse(readFileFromWorkspace('pipelines/moddel/mdProducts.co
 def config = new Yaml().load(("${WORKSPACE}/config.yaml" as File).text)
 
 config.each { jobname, data ->
-  println "Job: " + jobname
-  println "data: " + data
+  println "Building Job " + jobname + " Using data: " + data
+  
 } //end each block
 
 println "BRANCHES: End"
