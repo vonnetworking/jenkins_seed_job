@@ -9,7 +9,7 @@ class genPipeline {
 
     Job build(DslFactory dslFactory) {
       dslFactory.pipelineJob("$name") {
-          it.description this.jobDescription
+          "description" "Description"
           concurrentBuild(false)
 
           triggers {
