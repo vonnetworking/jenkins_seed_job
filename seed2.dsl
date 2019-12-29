@@ -29,8 +29,8 @@ class genPipeline {
                         }
                         stage ("Setup Env") {
                             script {
-                                envFileContents = readFile("${WORKSPACE}/manifest.yaml")
-                                config = readYaml file: "${WORKSPACE}/manifest.yaml"
+                                envFileContents = readFile("\${WORKSPACE}/manifest.yaml")
+                                config = readYaml file: "\${WORKSPACE}/manifest.yaml"
                                 echo "Pipeline Version: " + config.pipeline_version
                                 echo "initializing MD pipeline common lib version " + config.pipeline_version
                             }
