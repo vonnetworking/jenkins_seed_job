@@ -8,6 +8,10 @@ def config = slurper.parse(readFileFromWorkspace('pipelines/moddel/mdProducts.co
 def config = readYaml file: "${WORKSPACE}/config.yaml"
 
 config.each { jobname, data ->
+  println "Job: " + jobname
+  println "data: " + data
+
+  /*
   Job build(DslFactory dslFactory) {
     dslFactory.pipelineJob("$pipelineFolderName/$pipelineName") {
     it.description this.jobDescription
@@ -38,6 +42,7 @@ config.each { jobname, data ->
       } //end definition
     } //end Job Def
   } //end Job factory
+*/
 } //end each block
 
 println "BRANCHES: End"
