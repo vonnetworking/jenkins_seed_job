@@ -1,4 +1,7 @@
 job1:
   description: "this is a test job"
   git_url: "https://github.com/vonnetworking/pipeline_lib_test_project.git"
-  
+
+job2:
+  description: "this is a test job too"
+  git_url: "https://github.com/vonnetworking/pipeline_lib_test_project.git"
