@@ -51,4 +51,4 @@ class genPipeline {
   println "BRANCHES: End"
 }
 
-genPipeline().build(this)
+new genPipeline().build(this)
