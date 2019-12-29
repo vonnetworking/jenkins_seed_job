@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<h2 style="color:#006600">Fortify Scan Result </h2>
+<table id="customers">
+ <tr>
+    <th>Cross-Site Scripting</th>
+    <th>SQL Injection</th>
+    <th>Path Manipulation</th>
+    <th>Command Injection</th>
+    <th>status</th>
+  </tr>
+
+  <tr>
+    <td><%=crossSiteScriptingCount%></td>
+    <td><%=sqlInjectionCount%></td>
+    <td><%=pathManipulationCount%></td>
+    <td><%=commandInjectionCount%></td>
+    <td id="status"><%=scanResult%></td>
+  </tr>
+</table>
+
+<script>
+  var tds = document.getElementsByTagName("td");
+  for(var i = 0, j = tds.length; i < j; ++i)
+    if(tds[i].id == "status"){
+      if (tds[i].innerHTML == "Passed")
+      {
+        tds[i].style.color = "#00CC00";
+      }
+      else{
+        tds[i].style.color = "#FF0000";
+      }
+    }
+</script>
+
+<h5 style="color:#990000">**Any security finding in above categories will NOT pass Fortify scan.</h5>
+
+
+</body>
+</html>
