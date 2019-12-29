@@ -21,6 +21,8 @@ config.each { jobname, data ->
               scm("*/2 * * * *")
           }
 
+          def git_url = data.git_url
+          
           definition {
               cps {
                   sandbox()
@@ -30,7 +32,7 @@ config.each { jobname, data ->
                       node {
                         label any
                         stage ("Checkout") {
-                            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: \' $data.git_url \']]])
+                            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: \' $git_url \']]])
                         }
                         stage ("Setup Env") {
                             script {
