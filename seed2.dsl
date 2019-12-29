@@ -48,4 +48,5 @@ def config = new Yaml().load(("${WORKSPACE}/config.yaml" as File).text)
   } // end of dslFactory
 } //end each block
 }
+}
 println "BRANCHES: End"
