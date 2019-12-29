@@ -5,7 +5,7 @@ import org.yaml.snakeyaml.Yaml
 
 def config = new Yaml().load(("${WORKSPACE}/config.yaml" as File).text)
 
-config.each { jobname, data ->
+{ config.each { jobname, data ->
   println "Building Job " + jobname + " Using data: " + data
   Job build(DslFactory dslFactory) {
     dslFactory.pipelineJob("$pipelineFolderName/$pipelineName") {
@@ -44,9 +44,8 @@ config.each { jobname, data ->
                 """.stripIndent())
             } // end of cps
           } // end of definition
-        } // end of def closure
       } // end of pipelineJob
   } // end of dslFactory
 } //end each block
-
+}
 println "BRANCHES: End"
