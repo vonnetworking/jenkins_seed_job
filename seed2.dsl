@@ -1,4 +1,4 @@
-import com.moddel.lib.BranchPipelineGen
+import com.moddel.lib.BranchPipelineGen.genPipeline
 
 def config = new Yaml().load(("${WORKSPACE}/config.yaml" as File).text)
 
