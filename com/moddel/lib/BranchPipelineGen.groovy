@@ -1,3 +1,5 @@
+package com.moddel.lib
+
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 
