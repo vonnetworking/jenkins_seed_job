@@ -1,7 +1,7 @@
 @Grab('org.yaml:snakeyaml:1.17')
 import org.yaml.snakeyaml.Yaml
 
-import com.moddel.lib.BranchPipelineGen
+import BranchPipelineGen.*
 
 def config = new Yaml().load(("${WORKSPACE}/config.yaml" as File).text)
 
