@@ -39,7 +39,7 @@ class BranchPipelineGen {
                                 if (config_file_exists) {
                                   config = readYaml file: config_file
                                 } else {
-                                  config = { "pipeline_version": "master" }
+                                  config = [ "pipeline_version": "master" ]
                                   writeYaml file: config_file, data: config
                                 }
                                 echo "Pipeline Version: " + config.pipeline_version
