@@ -25,12 +25,25 @@ class BranchPipelineGen {
                             checkout([\$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: \' $git_url \']]])
                         }
                         stage ("Setup Env") {
+                          /* grabs config file from repo if it exists @ /pipeline_config.yaml
+                             if the repo does not contain a config file then a default configuration
+                             is created and written to the workspace for use in further stages
+
+                             vars
+                             config_file - string - defines path to config file in workspace
+                             config - map - contains pipeline config params
+                          */
                             script {
-                                envFileContents = readFile("\${WORKSPACE}/manifest.yaml")
-                                config = readYaml file: "\${WORKSPACE}/manifest.yaml"
-                                echo "Pipeline Version: " + config.pipeline_version
-                                echo "initializing MD pipeline common lib version " + config.pipeline_version
-                            }
+                                def config_file = "\${WORKSPACE}/pipeline_config.yaml"
+                                def config_file_exists = fileExists 'file'
+                                if (config_file_exists) {
+                                  config = readYaml file: config_file
+                                  echo "Pipeline Version: " + config.pipeline_version
+                                  echo "initializing MD pipeline common lib version " + config.pipeline_version
+                                } else {
+                                  config = { "pipeline_version" : "master" }
+                                  writeYaml file: config_file, data: config
+                                }
                             library 'MDPipeline@' + config.pipeline_version
                         }
                         MPLPipelineV2 {}
