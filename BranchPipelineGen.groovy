@@ -28,10 +28,6 @@ class BranchPipelineGen {
                           /* grabs config file from repo if it exists @ /pipeline_config.yaml
                              if the repo does not contain a config file then a default configuration
                              is created and written to the workspace for use in further stages
-
-                             vars
-                             config_file - string - defines path to config file in workspace
-                             config - map - contains pipeline config params
                           */
                             script {
                                 def config_file = "\${WORKSPACE}/pipeline_config.yaml"
