@@ -27,8 +27,7 @@ class BranchPipelineGen {
                         stage ("Setup Env") {
                           /* grabs config file from repo if it exists @ /pipeline_config.yaml
                              if the repo does not contain a config file then a default configuration
-                             is created and written to the workspace for use in further stages
-                          */
+                             is created and written to the workspace for use in further stages */
                             script {
                                 def config_file = "\${WORKSPACE}/pipeline_config.yaml"
                                 def config_file_exists = fileExists 'file'
@@ -40,10 +39,11 @@ class BranchPipelineGen {
                                 }
                                 echo "Pipeline Version: " + config.pipeline_version
                                 echo "initializing MD pipeline common lib version " + config.pipeline_version
-                            library 'MDPipeline@' + config.pipeline_version
-                        }
-                        MPLPipelineV2 {}
-                        }
+                                library 'MDPipeline@' + config.pipeline_version
+                            }
+                        } // end of "Setup Env" stage
+                            MPLPipelineV2 {}
+                        } // end of node
                       } // end of timestamp
                   """.stripIndent())
               } // end of cps
