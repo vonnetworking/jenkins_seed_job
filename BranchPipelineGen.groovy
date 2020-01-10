@@ -38,12 +38,12 @@ class BranchPipelineGen {
                                 def config_file_exists = fileExists 'file'
                                 if (config_file_exists) {
                                   config = readYaml file: config_file
-                                  echo "Pipeline Version: " + config.pipeline_version
-                                  echo "initializing MD pipeline common lib version " + config.pipeline_version
                                 } else {
-                                  config = { "pipeline_version" : "master" }
+                                  config = { "pipeline_version": "master" }
                                   writeYaml file: config_file, data: config
                                 }
+                                echo "Pipeline Version: " + config.pipeline_version
+                                echo "initializing MD pipeline common lib version " + config.pipeline_version
                             library 'MDPipeline@' + config.pipeline_version
                         }
                         MPLPipelineV2 {}
