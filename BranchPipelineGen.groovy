@@ -32,7 +32,7 @@ class BranchPipelineGen {
 
                             script {
                                 def config_file = "\${WORKSPACE}/pipeline_config.yaml"
-                                def config_file_exists = fileExists 'file'
+                                def config_file_exists = fileExists config_file
                                 if (config_file_exists) {
                                   config = readYaml file: config_file
                                 } else {
