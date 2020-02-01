@@ -1,38 +1,15 @@
-import javaposse.jobdsl.dsl.DslFactory
-import javaposse.jobdsl.dsl.Job
+@Grab('org.yaml:snakeyaml:1.17')
+import org.yaml.snakeyaml.Yaml
 
-def gitUrl = "https://github.com/vonnetworking/jenkins_seed_job.git"
-def pipelineFolderName = "TEST_FOLDER"
-def pipelineName = "TEST_JOB"
+import BranchPipelineGen
 
+def config = new Yaml().load(("${WORKSPACE}/config.yaml" as File).text)
 
-Job build(DslFactory dslFactory) {
-  dslFactory.pipelineJob("$pipelineFolderName/$pipelineName") {
-  it.description this.jobDescription
-
-  def gitUrl = "https://github.com/vonnetworking/jenkins_seed_job.git"
-  definition {
-      cps {
-          sandbox()
-
-      script("""
-        timestamps {
-          node('moddel') {
-            stage ('Clone') {
-                checkout([\$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [ [\$class: 'LocalBranch'], [\$class: 'WipeWorkspace'], [\$class: 'DisableRemotePoll'], [\$class: 'BuildChooserSetting',buildChooser: [\$class: 'DefaultBuildChooser']]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'bitbucket-clone', url: \' $gitURL \']]])
-            } // End of stage: Clone
-            stage ('Init') {
-              environmentVariables {
-                env('TESTVAR', '1')
-                propertiesFile('pipeline.properties')
-              }
-            }
-            stage ('Check Env') {
-              sh '''echo ${TESTVAR}'''
-            }
-          }
-        }""") //End script
-      } //End cps
-    } //end definition
-  } //end Job Def
-} //end Job factory
+config.each { jobname, data ->
+  println "Building Branches Job " + jobname + " Using data: " + data
+  def git_url = data.git_url
+  new BranchPipelineGen(
+    name: jobname,
+    git_url: git_url).build(this)
+  println "BRANCHES: End"
+} //end each block
