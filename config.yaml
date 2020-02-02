@@ -1,3 +1,6 @@
 job_av:
   description: "this is a test job"
   git_url: "https://github.com/vonnetworking/pipeline_lib_test_project.git"
+job_springboot_test:
+  description: "Basic Springboot app build"
+  git_url: "https://github.com/vonnetworking/gs-spring-boot-docker.git"
