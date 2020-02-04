@@ -3,7 +3,7 @@
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 
-class BranchPipelineGen {
+class BranchPipelineGenMDMPL {
     String name
     String git_url
 

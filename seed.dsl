@@ -2,6 +2,7 @@
 import org.yaml.snakeyaml.Yaml
 
 import BranchPipelineGen
+import BranchPipelineGenMDMPL
 
 def config = new Yaml().load(("${WORKSPACE}/config.yaml" as File).text)
 
