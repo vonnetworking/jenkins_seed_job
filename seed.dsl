@@ -9,7 +9,7 @@ def config = new Yaml().load(("${WORKSPACE}/config.yaml" as File).text)
 config.each { jobname, data ->
   println "Building Branches Job " + jobname + " Using data: " + data
   def git_url = data.git_url
-  def project_type = data.type.trim()
+  def project_type = data.type
   if( project_type == "mdmpl" ) {
     new BranchPipelineGenMDMPL(
       name: jobname,
