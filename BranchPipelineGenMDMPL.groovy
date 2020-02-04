@@ -41,10 +41,10 @@ class BranchPipelineGen {
                                 }
                                 echo "Pipeline Version: " + config.pipeline_version
                                 echo "initializing MD pipeline common lib version " + config.pipeline_version
-                                library 'MDPipeline@' + config.pipeline_version
+                                library 'MDMPL@' + config.pipeline_version
                             }
                         } // end of "Setup Env" stage
-                            MPLPipelineV2 {}
+                            BasicPipeline {}
                         } // end of node
                       } // end of timestamp
                   """.stripIndent())
