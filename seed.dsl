@@ -11,7 +11,7 @@ config.each { jobname, data ->
   def git_url = data.git_url
   def project_type = data.type
   println "$project_type"
-  if( project_type == "mdmpl" ) {
+  if( project_type.equals( "mdmpl" )) {
     new BranchPipelineGenMDMPL(
       name: jobname,
       git_url: git_url).build(this)
