@@ -44,7 +44,7 @@ class BranchPipelineGenMDMPL {
                                 library 'MDMPL@' + config.pipeline_version
                             }
                         } // end of "Setup Env" stage
-                            BasicPipeline {}
+                            MPLPipelineV2 {}
                         } // end of node
                       } // end of timestamp
                   """.stripIndent())
