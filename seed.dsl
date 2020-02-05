@@ -10,6 +10,7 @@ config.each { jobname, data ->
   println "Building Branches Job " + jobname + " Using data: " + data
   def git_url = data.git_url
   def project_type = data.type
+  println "$project_type"
   if( project_type == "mdmpl" ) {
     new BranchPipelineGenMDMPL(
       name: jobname,
